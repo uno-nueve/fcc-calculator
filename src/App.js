@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Calculator from './components/Calculator';
+import CalculatorTest from './components/Calculator-test';
+import CalculatorTest2 from './components/Calculator-test2';
+import CalculatorTest3 from './components/Calculator-test3';
+import NewCalculator from './components/newCalculator';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Calculator /> */}
+      {/* <CalculatorTest /> */}
+      {/* <CalculatorTest2 /> */}
+      {/* <CalculatorTest3 /> */}
+      <NewCalculator />
     </div>
   );
 }
