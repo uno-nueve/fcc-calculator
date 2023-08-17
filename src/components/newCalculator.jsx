@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
+import "./calculator.css";
 
 const buttons = [
     {id: 'clear', value: 'C', type: 'clear' },
@@ -23,7 +25,7 @@ const buttons = [
 const Display = ({ display, results }) => {
     console.log('Is this true: ', display.length === 1 && display === '0')
     return (
-        <div id="display">
+        <div id="display" className='display'>
             { results === '' 
                 ? display === ''
                     ? 0
@@ -34,14 +36,14 @@ const Display = ({ display, results }) => {
     )
 };
 
-const Key = ({ value, id, type, handleInput }) => {
+const Key = ({ value, id, type, handleInput, buttonClass }) => {
     return (
         <button 
-            className='button'
+            className={buttonClass}
             id={ id }
             onClick={ () => handleInput(value, type) }
         >
-            { value }
+            <span>{ value }</span>
         </button>
     )
 };
@@ -56,6 +58,11 @@ const Keyboard = ({ handleInput }) => {
                     key={key.id} 
                     type={key.type} 
                     handleInput={handleInput} 
+                    buttonClass={
+                        key.type === 'operator' ? 'operator-btn' :
+                        key.type === 'clear' ? 'clear-btn' :
+                        key.type === 'equals' ? 'equals-btn' : 'button'
+                    }
                 />
             )) }
         </div>
@@ -244,10 +251,12 @@ const NewCalculator = () => {
     };
 
     return (
-        <div>
-            <h1>Calculator</h1>
-            <Display display={display} results={results} />
-            <Keyboard handleInput={handleInput} />
+        <div className='wrapper'>
+            <div className='calculator-container'>
+                <Display display={display} results={results} />
+                <Keyboard handleInput={handleInput} />
+                <Footer />
+            </div>
         </div>
     );
 }
